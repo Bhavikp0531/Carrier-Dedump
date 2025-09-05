@@ -1,0 +1,32 @@
+{
+  "version": 2,
+  "dgSpecHash": "YZEshfQa5JnOrD6bz6o90ObxC+o7tZBowf92Rcl36UvMD+FmsL8X/824bRFp7lbnKwLnZhQ4OLyX7puysU0RTA==",
+  "success": true,
+  "projectFilePath": "D:\\Bhavik Parmar\\Carrier Dedump\\API\\CarrierDeduperAPI\\CarrierDeduperAPI.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\b.parmar\\.nuget\\packages\\microsoft.aspnetcore.openapi\\7.0.20\\microsoft.aspnetcore.openapi.7.0.20.nupkg.sha512",
+    "C:\\Users\\b.parmar\\.nuget\\packages\\microsoft.extensions.apidescription.server\\6.0.5\\microsoft.extensions.apidescription.server.6.0.5.nupkg.sha512",
+    "C:\\Users\\b.parmar\\.nuget\\packages\\microsoft.ml\\4.0.2\\microsoft.ml.4.0.2.nupkg.sha512",
+    "C:\\Users\\b.parmar\\.nuget\\packages\\microsoft.ml.cpumath\\4.0.2\\microsoft.ml.cpumath.4.0.2.nupkg.sha512",
+    "C:\\Users\\b.parmar\\.nuget\\packages\\microsoft.ml.dataview\\4.0.2\\microsoft.ml.dataview.4.0.2.nupkg.sha512",
+    "C:\\Users\\b.parmar\\.nuget\\packages\\microsoft.ml.onnxruntime\\1.22.1\\microsoft.ml.onnxruntime.1.22.1.nupkg.sha512",
+    "C:\\Users\\b.parmar\\.nuget\\packages\\microsoft.ml.onnxruntime.managed\\1.22.1\\microsoft.ml.onnxruntime.managed.1.22.1.nupkg.sha512",
+    "C:\\Users\\b.parmar\\.nuget\\packages\\microsoft.ml.tokenizers\\0.20.1\\microsoft.ml.tokenizers.0.20.1.nupkg.sha512",
+    "C:\\Users\\b.parmar\\.nuget\\packages\\microsoft.openapi\\1.4.3\\microsoft.openapi.1.4.3.nupkg.sha512",
+    "C:\\Users\\b.parmar\\.nuget\\packages\\newtonsoft.json\\13.0.3\\newtonsoft.json.13.0.3.nupkg.sha512",
+    "C:\\Users\\b.parmar\\.nuget\\packages\\swashbuckle.aspnetcore\\6.5.0\\swashbuckle.aspnetcore.6.5.0.nupkg.sha512",
+    "C:\\Users\\b.parmar\\.nuget\\packages\\swashbuckle.aspnetcore.swagger\\6.5.0\\swashbuckle.aspnetcore.swagger.6.5.0.nupkg.sha512",
+    "C:\\Users\\b.parmar\\.nuget\\packages\\swashbuckle.aspnetcore.swaggergen\\6.5.0\\swashbuckle.aspnetcore.swaggergen.6.5.0.nupkg.sha512",
+    "C:\\Users\\b.parmar\\.nuget\\packages\\swashbuckle.aspnetcore.swaggerui\\6.5.0\\swashbuckle.aspnetcore.swaggerui.6.5.0.nupkg.sha512",
+    "C:\\Users\\b.parmar\\.nuget\\packages\\system.codedom\\8.0.0\\system.codedom.8.0.0.nupkg.sha512",
+    "C:\\Users\\b.parmar\\.nuget\\packages\\system.collections.immutable\\8.0.0\\system.collections.immutable.8.0.0.nupkg.sha512",
+    "C:\\Users\\b.parmar\\.nuget\\packages\\system.memory\\4.6.0\\system.memory.4.6.0.nupkg.sha512",
+    "C:\\Users\\b.parmar\\.nuget\\packages\\system.numerics.tensors\\8.0.0\\system.numerics.tensors.8.0.0.nupkg.sha512",
+    "C:\\Users\\b.parmar\\.nuget\\packages\\system.reflection.emit.lightweight\\4.7.0\\system.reflection.emit.lightweight.4.7.0.nupkg.sha512",
+    "C:\\Users\\b.parmar\\.nuget\\packages\\system.runtime.compilerservices.unsafe\\6.0.0\\system.runtime.compilerservices.unsafe.6.0.0.nupkg.sha512",
+    "C:\\Users\\b.parmar\\.nuget\\packages\\system.text.encodings.web\\6.0.0\\system.text.encodings.web.6.0.0.nupkg.sha512",
+    "C:\\Users\\b.parmar\\.nuget\\packages\\system.text.json\\6.0.1\\system.text.json.6.0.1.nupkg.sha512",
+    "C:\\Users\\b.parmar\\.nuget\\packages\\system.threading.channels\\8.0.0\\system.threading.channels.8.0.0.nupkg.sha512"
+  ],
+  "logs": []
+}

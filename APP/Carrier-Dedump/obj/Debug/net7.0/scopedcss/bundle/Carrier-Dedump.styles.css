@@ -1,0 +1,15 @@
+/* /Shared/MainLayout.razor.rz.scp.css */
+/* /Shared/NavMenu.razor.rz.scp.css */
+.nav-item[b-y0jehlrnew]  a {
+    display: flex;
+    align-items: center;
+    height: 3rem;
+    line-height: 3rem;
+    padding: 0 0.5rem;
+    text-decoration: none;
+}
+
+.nav-item[b-y0jehlrnew]  a .oi {
+    margin-right: 0.5rem;
+    vertical-align: middle;
+}

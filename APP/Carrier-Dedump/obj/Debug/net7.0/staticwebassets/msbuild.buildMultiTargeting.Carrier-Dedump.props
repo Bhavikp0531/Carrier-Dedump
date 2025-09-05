@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\build\Carrier-Dedump.props" />
+</Project>

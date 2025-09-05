@@ -1,0 +1,37 @@
+is_global = true
+build_property.TargetFramework = net7.0
+build_property.TargetPlatformMinVersion = 
+build_property.UsingMicrosoftNETSdkWeb = 
+build_property.ProjectTypeGuids = 
+build_property.InvariantGlobalization = false
+build_property.PlatformNeutralAssembly = 
+build_property.EnforceExtendedAnalyzerRules = 
+build_property._SupportedPlatformList = browser
+build_property.RootNamespace = Carrier-Dedump
+build_property.RootNamespace = Carrier-Dedump
+build_property.ProjectDir = D:\Bhavik Parmar\Carrier Dedump\APP\Carrier-Dedump\
+build_property.RazorLangVersion = 7.0
+build_property.SupportLocalizedComponentNames = 
+build_property.GenerateRazorMetadataSourceChecksumAttributes = 
+build_property.MSBuildProjectDirectory = D:\Bhavik Parmar\Carrier Dedump\APP\Carrier-Dedump
+build_property._RazorSourceGeneratorDebug = 
+
+[D:/Bhavik Parmar/Carrier Dedump/APP/Carrier-Dedump/App.razor]
+build_metadata.AdditionalFiles.TargetPath = QXBwLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Bhavik Parmar/Carrier Dedump/APP/Carrier-Dedump/Pages/Dedupe.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRGVkdXBlLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Bhavik Parmar/Carrier Dedump/APP/Carrier-Dedump/_Imports.razor]
+build_metadata.AdditionalFiles.TargetPath = X0ltcG9ydHMucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Bhavik Parmar/Carrier Dedump/APP/Carrier-Dedump/Shared/MainLayout.razor]
+build_metadata.AdditionalFiles.TargetPath = U2hhcmVkXE1haW5MYXlvdXQucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = b-sjtoj8pppc
+
+[D:/Bhavik Parmar/Carrier Dedump/APP/Carrier-Dedump/Shared/NavMenu.razor]
+build_metadata.AdditionalFiles.TargetPath = U2hhcmVkXE5hdk1lbnUucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = b-y0jehlrnew

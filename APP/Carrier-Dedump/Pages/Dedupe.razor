@@ -1,0 +1,196 @@
+﻿@page "/"
+@using Carrier_Dedump.Model
+@using System.Text.Json
+@using System.IO
+@inject HttpClient Http
+@inject IJSRuntime JS
+
+<div class="container mt-4">
+
+    <h3 class="mb-4 text-primary">Carrier Question Deduper</h3>
+
+    <!-- Input Section -->
+    <div class="card mb-4 shadow-sm">
+        <div class="card-header bg-primary text-white">
+            <strong>Paste Questions JSON</strong>
+        </div>
+        <div class="card-body">
+         <textarea class="form-control mb-3" rows="6" @bind="rawInput"></textarea>    
+         <button class="btn btn-primary" @onclick="Submit" disabled="@isLoading">
+         @if (isLoading)
+         {
+           <span class="spinner-border spinner-border-sm me-2" role="status"></span>
+           @("Processing...")
+         }
+         else
+         {
+           @("Deduplicate")
+         }
+        </button>
+
+        </div>
+    </div>
+
+    <!-- File Upload Section -->
+    <div class="card mb-4 shadow-sm">
+        <div class="card-header bg-secondary text-white">
+            <strong>Upload Questions File</strong>
+        </div>
+        <div class="card-body">
+            <InputFile OnChange="OnFileSelected" class="form-control mb-2" />
+            @if (!string.IsNullOrEmpty(uploadedFileName))
+            {
+                <div class="alert alert-success py-1 px-2 mt-2">
+                    <strong>Uploaded:</strong> @uploadedFileName
+                </div>
+            }
+            <small class="text-muted">Supported formats: JSON, CSV</small>
+        </div>
+    </div>
+
+    <!-- Results Section -->
+    @if (results != null)
+    {
+        <div class="card mb-4 shadow-sm">
+            <div class="card-header bg-success text-white">
+                <strong>Deduplication Results</strong>
+            </div>
+            <div class="card-body">
+
+                <div class="mb-3">
+                    <button class="btn btn-success me-2" @onclick="DownloadAsJson">⬇ Download JSON</button>
+                    <button class="btn btn-info" @onclick="DownloadAsCsv">⬇ Download CSV</button>
+                </div>
+
+                <div class="table-responsive">
+                    <table class="table table-bordered table-striped">
+                        <thead class="table-light">
+                            <tr>
+                                <th>#</th>
+                                <th>Master Question</th>
+                                <th>Variants</th>
+                                <th>Carriers</th>
+                                <th>Rationale</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+    @{
+        int i = 1;
+    }
+    @foreach (var group in results)
+    {
+        <tr>
+            <td>@i</td>
+            <td>@group.MasterQuestion</td>
+            <td>
+                <ul class="mb-0">
+                    @foreach (var v in group.Variants)
+                    {
+                        <li>@v</li>
+                    }
+                </ul>
+            </td>
+            <td>@string.Join(", ", group.Carriers)</td>
+            <td>@group.Rationale</td>
+        </tr>
+        i++;
+    }
+</tbody>
+
+                    </table>
+                </div>
+
+            </div>
+        </div>
+    }
+</div>
+
+
+@code {
+    private string rawInput = @"[
+  { ""carrier"": ""Carrier A"", ""question"": ""What is the claim filing process?"" },
+  { ""carrier"": ""Carrier B"", ""question"": ""How do I file a claim?"" },
+  { ""carrier"": ""Carrier C"", ""question"": ""What is the maximum coverage limit?"" }
+]";
+    private List<DedupedQuestionModelResult>? results;
+    private string? uploadedFileName;
+    private bool isLoading = false;
+
+    private async Task Submit()
+    {
+        try
+        {
+            isLoading = true;
+            var inputs = JsonSerializer.Deserialize<List<CarrierQuestionModel>>(
+              rawInput,new JsonSerializerOptions { PropertyNameCaseInsensitive = true });   
+            var response = await Http.PostAsJsonAsync("/api/deduper/dedupe", inputs);
+            if (response.IsSuccessStatusCode)
+            {
+                results = await response.Content.ReadFromJsonAsync<List<DedupedQuestionModelResult>>();
+            }
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Error: " + ex.Message);
+        }
+        finally
+        {
+            isLoading = false;
+        }
+    }
+
+    private async Task OnFileSelected(InputFileChangeEventArgs e)
+    {
+        var file = e.File;
+        uploadedFileName = file.Name;
+
+        using var stream = file.OpenReadStream();
+        using var reader = new StreamReader(stream);
+
+        string content = await reader.ReadToEndAsync();
+
+        if (file.Name.EndsWith(".json"))
+        {
+            rawInput = content; // JSON directly
+        }
+        else if (file.Name.EndsWith(".csv"))
+        {
+            // Expect CSV format: carrier,question
+            var lines = content.Split("\n", StringSplitOptions.RemoveEmptyEntries);
+            var questions = lines.Skip(1) // skip header
+                                 .Select(l =>
+                                 {
+                                     var parts = l.Split(",");
+                                     return new CarrierQuestionModel
+                                     {
+                                         Carrier = parts[0].Trim(),
+                                         Question = parts[1].Trim()
+                                     };
+                                 })
+                                 .ToList();
+
+            rawInput = JsonSerializer.Serialize(questions, new JsonSerializerOptions { WriteIndented = true });
+        }
+    }
+
+    private async Task DownloadAsJson()
+    {
+        if (results == null) return;
+        var json = JsonSerializer.Serialize(results, new JsonSerializerOptions { WriteIndented = true });
+        await JS.InvokeVoidAsync("downloadFile", "results.json", "application/json", json);
+    }
+
+    private async Task DownloadAsCsv()
+    {
+        if (results == null) return;
+        var csv = new StringWriter();
+        csv.WriteLine("MasterQuestion,Variants,Carriers,Rationale");
+        foreach (var r in results)
+        {
+            var variants = string.Join(" | ", r.Variants);
+            var carriers = string.Join(" | ", r.Carriers);
+            csv.WriteLine($"\"{r.MasterQuestion}\",\"{variants}\",\"{carriers}\",\"{r.Rationale}\"");
+        }
+        await JS.InvokeVoidAsync("downloadFile", "results.csv", "text/csv", csv.ToString());
+    }
+}

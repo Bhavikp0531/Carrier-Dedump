@@ -1,0 +1,39 @@
+﻿<div class="top-row navbar navbar-expand-lg navbar-danger bg-danger shadow-sm fixed-top">
+    <a class="navbar-brand text-dark" href="">    
+        <img src="Images/logo.png" width="40" height="40" class="me-2" alt="Logo" />
+        Carrier Question Deduper
+    </a>
+
+    <button class="navbar-toggler" type="button" @onclick="ToggleNavMenu">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="@NavMenuCssClass collapse navbar-collapse">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+                <NavLink class="nav-link text-dark" href="" Match="NavLinkMatch.All">
+                    <span class="oi oi-document me-1"></span> Deduper
+                </NavLink>
+            </li>
+            <li class="nav-item">
+                <NavLink class="nav-link text-dark" href="otherpage">
+                    <span class="oi oi-home me-1"></span> Home
+                </NavLink>
+            </li>
+        </ul>
+    </div>
+</div>
+
+
+@code {
+    private bool collapseNavMenu = true;
+
+    private string? NavMenuCssClass => collapseNavMenu
+        ? "collapse navbar-collapse"
+        : "collapse navbar-collapse show";
+
+    private void ToggleNavMenu()
+    {
+        collapseNavMenu = !collapseNavMenu;
+    }
+}
