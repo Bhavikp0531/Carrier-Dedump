@@ -5,8 +5,7 @@ The goal of this project is to identify and remove duplicate carrier questions e
 
 ## 🚀 Project Overview
 - **Backend:** .NET Core Web API  
-- **Frontend:** Blazor WebAssembly (hosted inside the API)  
-- **Deployment:** Hosted on Render (Free Plan)
+- **Frontend:** Blazor WebAssembly  
 
 ## ⚡ Features
 - Carrier question de-duplication
